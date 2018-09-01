@@ -13,14 +13,12 @@ public class LevelProgressBar : MonoBehaviour
     private PlayerController player;
 
     private float trackDistance;
-    private float distance;
     private bool isStarted = false;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
         trackDistance = Vector3.Distance(trackStart.position, trackEnd.position);
-        distance = endPos.position.x - startPos.position.x - startPos.rect.width - endPos.rect.width;
     }
 
     void Update()
