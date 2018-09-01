@@ -7,20 +7,28 @@ public class PlayerController : MonoBehaviour
     [Header("Assignments")]
     public Rigidbody rigid;
 
-    [Header("Settings")]
-    public float currentSpeed;
-    public float minSpeed = 1f;
-    public float maxSpeed = 4f;
+    [Header("Handling")]
     public float handling;
     public float decreaseFactor = 1;
     public AnimationCurve handlingModifierCurve;
 
-    //PRIVATE
+    [Header("Speed")]
+    public float currentSpeed;
+    public float minSpeed = 1f;
+    public float maxSpeed = 4f;
 
+    public AnimationCurve speedCurve;
+
+    [Header("Brake")]
+    public float brakeGraceDuration = 1f;
+    public float brakeGraceModifier = 4f;
+
+    //PRIVATE
     private Vector3 frameInput;
 
-    private float lastLeftTime;
-    private float lastRightTime;
+    private float lastLeftDownTime;
+    private float lastRightDownTime;
+    private float lastBrakeTime;
 
     private Coroutine startRoutine;
     private float startCountdown;
@@ -43,31 +51,46 @@ public class PlayerController : MonoBehaviour
 
         frameInput = Vector3.zero;
 
+        //Button Down Timer
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            lastLeftTime = Time.time;
+            lastLeftDownTime = Time.time;
         }
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            lastRightTime = Time.time;
+            lastRightDownTime = Time.time;
         }
 
+        //Left Right Movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            frameInput += Vector3.left * handling * Mathf.Lerp(1, 0, lastLeftTime / (Time.time * decreaseFactor));
+            frameInput += Vector3.left * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
             OnLeftKey();
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            frameInput += Vector3.right * handling * Mathf.Lerp(1, 0, lastLeftTime / (Time.time * decreaseFactor));
+            frameInput += Vector3.right * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
             OnRightKey();
         }
 
+        //Braking or Acceleration
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             OnBrakeKey();
+            lastBrakeTime = Time.time;
+        }
+        else
+        {
+
+
+            //speedCurve.Evaluate()
+
+            if(lastBrakeTime + brakeGraceDuration > Time.time)
+            {
+
+            }
         }
 
         rigid.velocity += frameInput;
@@ -80,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         while (startCountdown < timeForEffect)
         {
-            rigid.velocity = new Vector3(0f, 0f, Mathf.Lerp(0f, minSpeed, startCountdown / timeForEffect));
+            rigid.velocity = transform.forward * Mathf.Lerp(0f, minSpeed, startCountdown / timeForEffect);
             startCountdown += Time.deltaTime;
             yield return null;
         }

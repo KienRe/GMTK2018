@@ -802,6 +802,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 1753688302}
+  currentSpeed: 0
+  minSpeed: 1
+  maxSpeed: 4
   handling: 0.4
   decreaseFactor: 2
   handlingModifierCurve:
@@ -823,7 +826,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 96
   m_CollisionDetection: 1
 --- !u!65 &1753688303
 BoxCollider:
