@@ -51,21 +51,20 @@ public class JumpBehaviour : MonoBehaviour
             player.IsJumping = true;
 
             if (jumpRoutine == null)
-                jumpRoutine = StartCoroutine(Jump(player, a, b, c));
+                jumpRoutine = StartCoroutine(Jump(player, a, b, c, jumpTime));
             else
                 Debug.Log("Cant start jump routine again!");
         }
 
     }
 
-    private IEnumerator Jump(PlayerController player, Vector3 a, Vector3 b, Vector3 c)
+    private IEnumerator Jump(PlayerController player, Vector3 a, Vector3 b, Vector3 c, float jumpTime)
     {
         float elapsed = 0f;
-        float timeForJump = 2f;
 
-        while (elapsed < timeForJump)
+        while (elapsed < jumpTime)
         {
-            float t = elapsed / timeForJump;
+            float t = elapsed / jumpTime;
 
             player.transform.position = Bezier.GetPoint(a, b, c, t);
             player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.Euler(endRot), t);

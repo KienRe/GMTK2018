@@ -3428,6 +3428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 30
   jumpWidth: 50
+  jumpTime: 2
 --- !u!65 &1025292626
 BoxCollider:
   m_ObjectHideFlags: 0
