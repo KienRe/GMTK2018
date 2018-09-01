@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 3a0626ab663398642bae7bf33491779f
+guid: a6cc960cdd01a7545942fe9ed6612270
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Track_Switch
-    100002: //RootNode
-    400000: Track_Switch
-    400002: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    2300000: Track_Switch
-    3300000: Track_Switch
-    4300000: Track_Switch
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Track_CornerL
   externalObjects: {}
   materials:
     importMaterials: 0

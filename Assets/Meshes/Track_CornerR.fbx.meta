@@ -1,19 +1,17 @@
 fileFormatVersion: 2
-guid: 1d5771194fbed6841a768ac3f6ff0676
+guid: 1612f9acc0c14c94b949f1230ea4367b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Track_Start
-    100002: //RootNode
-    400000: Track_Start
-    400002: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    2300000: Track_Start
-    3300000: Track_Start
-    4300000: Track_Start
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Track_CornerR
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -69,7 +67,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
