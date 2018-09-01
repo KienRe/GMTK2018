@@ -26,10 +26,9 @@ public class PlayerController : MonoBehaviour
     [Header("Ressource")]
     public float movementDecreaseFactor;
     public float breakDecreaseFactor;
+    public float metalBarRessource = 1.0f;
 
     //PRIVATE
-    private float metalBarRessource = 1.0f;
-
     private Vector3 frameInput;
 
     private float lastLeftDownTime;
