@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23936215876933648}
   - component: {fileID: 64844217295602608}
   m_Layer: 0
-  m_Name: Track Straight
+  m_Name: Track_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

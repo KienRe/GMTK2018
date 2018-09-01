@@ -10,28 +10,29 @@ public class PlayerController : MonoBehaviour
 
     [Header("Handling")]
     public float handling;
-    public float decreaseFactor = 1;
+    public float decreaseFactor;
     public AnimationCurve handlingModifierCurve;
 
     [Header("Speed")]
     public float currentSpeed;
-    public float accelDiv = 8f;
-    public float minSpeed = 1f;
-    public float maxSpeed = 4f;
+    public float accelDiv;
+    public float boostDiv;
+    public float minSpeed;
+    public float maxSpeed;
 
     [Header("Speed Threshold")]
-    public float dangerSpeed = 40f;
-    public float killSpeed = 49f;
+    public float dangerSpeed;
+    public float killSpeed;
 
     [Header("Brake")]
-    public float breakMultiplier = 2f;
-    public float brakeGraceDuration = 1f;
-    public float brakeGraceModifier = 4f;
+    public float breakMultiplier;
+    public float brakeGraceDuration;
+    public float brakeGraceModifier;
 
     [Header("Ressource")]
     public float movementDecreaseFactor;
     public float breakDecreaseFactor;
-    public float metalBarRessource = 1.0f;
+    public float metalBarRessource;
 
     //PRIVATE
     private Vector3 frameInput;
@@ -48,7 +49,9 @@ public class PlayerController : MonoBehaviour
     public static event Action OnRightKey = delegate { };
     public static event Action OnBrakeKey = delegate { };
 
+    //PROPERTIES
     public bool IsJumping { get; set; }
+    public bool IsOnSpeedbooster { get; set; }
 
     private void Start()
     {
@@ -100,6 +103,12 @@ public class PlayerController : MonoBehaviour
 
             metalBarRessource -= Time.deltaTime * movementDecreaseFactor;
             OnRightKey();
+        }
+
+        //Speedbooster
+        if (IsOnSpeedbooster)
+        {
+            currentSpeed += Time.deltaTime / boostDiv;
         }
 
 
@@ -154,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         GUI.Label(new Rect(0, 0, 200, 50), "Speed:" + rigid.velocity.z);
         GUI.Label(new Rect(0, 100, 200, 50), "Metal Bar Ressource:" + metalBarRessource);
+        GUI.Label(new Rect(0, 200, 200, 50), "IsSpeedBooster:" + IsOnSpeedbooster);
 
         if (startRoutine != null)
         {
