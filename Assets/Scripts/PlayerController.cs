@@ -14,10 +14,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Speed")]
     public float currentSpeed;
+    public float accelDiv = 8f;
     public float minSpeed = 1f;
     public float maxSpeed = 4f;
-
-    public AnimationCurve speedCurve;
 
     [Header("Brake")]
     public float brakeGraceDuration = 1f;
@@ -83,17 +82,17 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            currentSpeed += Time.deltaTime / accelDiv;
+            currentSpeed = Mathf.Clamp(currentSpeed, minSpeed, maxSpeed);
 
-
-            //speedCurve.Evaluate()
-
-            if(lastBrakeTime + brakeGraceDuration > Time.time)
+            if (lastBrakeTime + brakeGraceDuration > Time.time)
             {
 
             }
         }
 
         rigid.velocity += frameInput;
+        rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, currentSpeed);
     }
 
     private IEnumerator StartSpeedUp()
@@ -108,6 +107,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        currentSpeed = minSpeed;
         startRoutine = null;
     }
 
