@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 47c41b27c7555db4cb52392ed87fe933
+guid: 6b046a3edf5fae14cbf99e028ed6a6b6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: //RootNode
+    400000: //RootNode
+    2100000: lambert1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pPipe4
   externalObjects: {}
   materials:
     importMaterials: 1
