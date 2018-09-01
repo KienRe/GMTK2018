@@ -19,9 +19,13 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 4f;
 
     [Header("Brake")]
-    public float breakDiv = 4f;
+    public float breakMultiplier = 2f;
     public float brakeGraceDuration = 1f;
     public float brakeGraceModifier = 4f;
+
+    [Header("Ressource")]
+    public float movementDecreaseFactor;
+    public float breakDecreaseFactor;
 
     //PRIVATE
     private float metalBarRessource = 1.0f;
@@ -67,25 +71,30 @@ public class PlayerController : MonoBehaviour
         }
 
         //Left Right Movement
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) && metalBarRessource > 0.0f)
         {
             frameInput += Vector3.left * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
+
+            metalBarRessource -= Time.deltaTime * movementDecreaseFactor;
             OnLeftKey();
         }
-
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             frameInput += Vector3.right * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
+
+            metalBarRessource -= Time.deltaTime * movementDecreaseFactor;
             OnRightKey();
         }
 
+
         //Braking or Acceleration
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && metalBarRessource > 0.0f)
         {
             OnBrakeKey();
             lastBrakeTime = Time.time;
 
-            currentSpeed -= Time.deltaTime / breakDiv;
+            currentSpeed -= Time.deltaTime * breakMultiplier;
+            metalBarRessource -= Time.deltaTime * breakDecreaseFactor;
         }
         else
         {
@@ -94,9 +103,9 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Grace Brake Time");
 
-                currentSpeed += Time.deltaTime / (accelDiv / brakeGraceModifier);
+                currentSpeed += Time.deltaTime * brakeGraceModifier;
             }
-            //Normal accelration
+            //Normal acceleration
             else
             {
                 currentSpeed += Time.deltaTime / accelDiv;
