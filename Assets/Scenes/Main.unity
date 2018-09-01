@@ -1055,6 +1055,7 @@ MonoBehaviour:
   accelDiv: 2
   minSpeed: 1
   maxSpeed: 20
+  breakDiv: 1.4
   brakeGraceDuration: 1
   brakeGraceModifier: 4
 --- !u!54 &1753688302

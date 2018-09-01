@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 4f;
 
     [Header("Brake")]
+    public float breakDiv = 4f;
     public float brakeGraceDuration = 1f;
     public float brakeGraceModifier = 4f;
 
@@ -83,17 +84,26 @@ public class PlayerController : MonoBehaviour
         {
             OnBrakeKey();
             lastBrakeTime = Time.time;
+
+            currentSpeed -= Time.deltaTime / breakDiv;
         }
         else
         {
-            currentSpeed += Time.deltaTime / accelDiv;
-            currentSpeed = Mathf.Clamp(currentSpeed, minSpeed, maxSpeed);
-
+            //When braking the acceleration is slowed for brakeGraceDuration
             if (lastBrakeTime + brakeGraceDuration > Time.time)
             {
                 Debug.Log("Grace Brake Time");
+
+                currentSpeed += Time.deltaTime / (accelDiv / brakeGraceModifier);
+            }
+            //Normal accelration
+            else
+            {
+                currentSpeed += Time.deltaTime / accelDiv;
             }
         }
+
+        currentSpeed = Mathf.Clamp(currentSpeed, minSpeed, maxSpeed);
 
         rigid.velocity += frameInput;
         rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, currentSpeed);
