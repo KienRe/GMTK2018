@@ -1,0 +1,45 @@
+UI
+Trackprogress
+Crowbar
+Speedometer
+Title
+Icon
+Buttons
+Insturctions in Main Menu
+
+Meshes
+Dude
+Shopping Kart
+Crowbar Pickup
+Environment Background
+
+Programming
+Implement Ramp Speed Condition + SpeedText
+Implement Failstate + Restart
+Implement StartCountdown
+Adjust PostProccessing
+Implement rigidbody death explosion
+
+VFX
+Spark Particels on Left/Right + Brake + Side Collision + Landing
+Booster Trail Particels
+Relative FOV to currentSpeed
+Death Explosion
+Motion Blur
+Depth of Field
+
+Design
+Build Level
+Place Pickups
+Place Speedboosters
+Place Jumps
+
+Sounds
+Theme Sound
+Crash Sounds
+Squeak Sounds on Left/Right/Brake
+Pickup Sounds
+Booster Sounds
+
+Nice to Have
+Implement Slowmotion
