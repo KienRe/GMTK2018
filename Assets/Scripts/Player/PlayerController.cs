@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     public static event Action OnRightKey = delegate { };
     public static event Action OnBrakeKey = delegate { };
 
+    public bool IsJumping { get; set; }
+
     private void Start()
     {
         rigid.velocity = new Vector3(0f, 0f, 10f);
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (startRoutine != null) return;
+        if (IsJumping) return;
 
         if (currentSpeed > dangerSpeed)
         {
