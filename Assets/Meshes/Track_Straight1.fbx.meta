@@ -3,11 +3,13 @@ guid: 6b046a3edf5fae14cbf99e028ed6a6b6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: pPipe4
+    100002: //RootNode
+    400000: pPipe4
+    400002: //RootNode
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
+    2300000: pPipe4
+    3300000: pPipe4
     4300000: pPipe4
   externalObjects: {}
   materials:
@@ -59,7 +61,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:

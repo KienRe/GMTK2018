@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class LevelProgressBar : MonoBehaviour
 {
-
     public RectTransform startPos;
     public RectTransform endPos;
-    public RectTransform player;
+    public RectTransform playerIcon;
+    public Transform trackStart;
+    public Transform trackEnd;
 
-    [Range(0f, 100f)]
-    public float value;
+    private PlayerController player;
+
+    private float trackDistance;
     private float distance;
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         distance = endPos.position.x - startPos.position.x - startPos.rect.width - endPos.rect.width;
     }
 
     void Update()
     {
-        float progess = Remapper.Remap(value, 0, 100, startPos.position.x, endPos.position.x);
-        player.position = new Vector3(progess, player.position.y, player.position.z);
+        float progess = Remapper.Remap(trackDistance, 0, 100, startPos.position.x, endPos.position.x);
+        playerIcon.position = new Vector3(progess, playerIcon.position.y, playerIcon.position.z);
 
     }
 }
