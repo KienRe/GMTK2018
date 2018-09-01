@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public float minSpeed = 1f;
     public float maxSpeed = 4f;
 
+    [Header("Speed Threshold")]
+    public float dangerSpeed = 40f;
+    public float killSpeed = 49f;
+
     [Header("Brake")]
     public float breakMultiplier = 2f;
     public float brakeGraceDuration = 1f;
@@ -61,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         if (startRoutine != null) return;
 
-        if(currentSpeed > 3f)
+        if (currentSpeed > dangerSpeed)
         {
             playerCamera.Shake(1f, 0.1f, 0.4f);
         }
