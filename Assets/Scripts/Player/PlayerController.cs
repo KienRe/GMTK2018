@@ -71,14 +71,14 @@ public class PlayerController : MonoBehaviour
         }
 
         //Left Right Movement
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) && metalBarRessource > 0.0f)
+        if (metalBarRessource > 0.0f && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
         {
             frameInput += Vector3.left * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
 
             metalBarRessource -= Time.deltaTime * movementDecreaseFactor;
             OnLeftKey();
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if (metalBarRessource > 0.0f && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
         {
             frameInput += Vector3.right * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
 
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Braking or Acceleration
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && metalBarRessource > 0.0f)
+        if (metalBarRessource > 0.0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)))
         {
             OnBrakeKey();
             lastBrakeTime = Time.time;
