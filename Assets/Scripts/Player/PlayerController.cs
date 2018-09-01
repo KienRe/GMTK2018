@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Assignments")]
     public Rigidbody rigid;
+    public PlayerCamera playerCamera;
 
     [Header("Handling")]
     public float handling;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         rigid.velocity = new Vector3(0f, 0f, 10f);
 
-        MetalBar.OnMetalBarPickup += () => 
+        MetalBar.OnMetalBarPickup += () =>
         {
             metalBarRessource += 0.5f;
             metalBarRessource = Mathf.Clamp01(metalBarRessource);
@@ -59,6 +60,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (startRoutine != null) return;
+
+        if(currentSpeed > 3f)
+        {
+            playerCamera.Shake(1f, 0.1f, 0.4f);
+        }
 
         frameInput = Vector3.zero;
 
