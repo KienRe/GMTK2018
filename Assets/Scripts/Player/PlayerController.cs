@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public float brakeGraceModifier = 4f;
 
     //PRIVATE
+    private float metalBarRessource = 1.0f;
+
     private Vector3 frameInput;
 
     private float lastLeftDownTime;
@@ -40,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rigid.velocity = new Vector3(0f, 0f, 10f);
+
+        MetalBar.OnMetalBarPickup += () => { metalBarRessource = 1.0f; };
 
         startRoutine = StartCoroutine(StartSpeedUp());
     }
@@ -87,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
             if (lastBrakeTime + brakeGraceDuration > Time.time)
             {
-
+                Debug.Log("Grace Brake Time");
             }
         }
 
@@ -114,6 +118,7 @@ public class PlayerController : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(new Rect(0, 0, 200, 50), "Speed:" + rigid.velocity.z);
+        GUI.Label(new Rect(0, 100, 200, 50), "Metal Bar Ressource:" + metalBarRessource);
 
         if (startRoutine != null)
         {
