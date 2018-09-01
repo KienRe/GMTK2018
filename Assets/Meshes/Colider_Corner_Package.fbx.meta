@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: 3a0626ab663398642bae7bf33491779f
+guid: 45d08b71ea448b24b818b31ae44fe81f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Track_Switch
-    100002: //RootNode
-    400000: Track_Switch
-    400002: //RootNode
+    100000: //RootNode
+    100002: polySurface67
+    100004: polySurface68
+    100006: polySurface69
+    100008: polySurface70
+    400000: //RootNode
+    400002: polySurface67
+    400004: polySurface68
+    400006: polySurface69
+    400008: polySurface70
     2100000: lambert1
-    2300000: Track_Switch
-    3300000: Track_Switch
-    4300000: Track_Switch
+    2300000: polySurface67
+    2300002: polySurface68
+    2300004: polySurface69
+    2300006: polySurface70
+    3300000: polySurface67
+    3300002: polySurface68
+    3300004: polySurface69
+    3300006: polySurface70
+    4300000: polySurface67
+    4300002: polySurface68
+    4300004: polySurface69
+    4300006: polySurface70
   externalObjects: {}
   materials:
     importMaterials: 0
