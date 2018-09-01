@@ -47,7 +47,11 @@ public class PlayerController : MonoBehaviour
     {
         rigid.velocity = new Vector3(0f, 0f, 10f);
 
-        MetalBar.OnMetalBarPickup += () => { metalBarRessource = 1.0f; };
+        MetalBar.OnMetalBarPickup += () => 
+        {
+            metalBarRessource += 0.5f;
+            metalBarRessource = Mathf.Clamp01(metalBarRessource);
+        };
 
         startRoutine = StartCoroutine(StartSpeedUp());
     }
