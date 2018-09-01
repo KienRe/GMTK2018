@@ -3,12 +3,14 @@ guid: 1d5771194fbed6841a768ac3f6ff0676
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Track_Start
+    100002: //RootNode
+    400000: Track_Start
+    400002: //RootNode
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pPlane16
+    2300000: Track_Start
+    3300000: Track_Start
+    4300000: Track_Start
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -59,7 +61,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
