@@ -30,6 +30,9 @@ public class MainManager : MonoBehaviour
     public Transform menuCameraTransform;
     public Transform gameplayCameraTransform;
 
+    [Header("Audio")]
+    public AudioSource themeAudio;
+
     private GameState gameState = GameState.NONE;
 
     private MetalBar[] bars;
@@ -37,6 +40,8 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
+        themeAudio.Play();
+
         menuCamera.transform.position = menuCameraTransform.position;
         gameplayCamera.transform.position = gameplayCameraTransform.position;
 

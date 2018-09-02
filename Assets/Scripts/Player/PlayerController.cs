@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource steeringAudio;
     public AudioSource speedBoosterAudio;
     public AudioSource pickupAudio;
+    public AudioSource breakAudio;
+    public AudioSource collisionAudio;
+    public AudioSource jumpAudio;
 
     //PRIVATE
     private Vector3 frameInput;
@@ -221,6 +224,8 @@ public class PlayerController : MonoBehaviour
             //When braking the acceleration is slowed for brakeGraceDuration
             if (lastBrakeTime + brakeGraceDuration > Time.time)
             {
+                if (!breakAudio.isPlaying)
+                    breakAudio.Play();
 
                 currentSpeed += Time.deltaTime * brakeGraceModifier;
             }
@@ -228,6 +233,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentSpeed += Time.deltaTime / accelDiv;
+
+                breakAudio.Stop();
             }
         }
 
