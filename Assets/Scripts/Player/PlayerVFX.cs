@@ -8,6 +8,9 @@ public class PlayerVFX : MonoBehaviour
     public ParticleSystem leftSideSparks;
     public ParticleSystem rightSideSparks;
     public ParticleSystem landingSparks;
+    public ParticleSystem crowbarSparksLeft;
+    public ParticleSystem crowbarSparksRight;
+    public ParticleSystem breakSparks;
 
     public bool IsLeftSideCol { get; set; }
     public bool IsRightSideCol { get; set; }

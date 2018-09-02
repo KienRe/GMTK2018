@@ -8,13 +8,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rigid;
     public PlayerCamera playerCamera;
     public Transform startPoint;
+    public Transform crowbar;
+    public PlayerVFX playerVFX;
 
     [Header("Handling")]
     public AnimationCurve handlingCurve;
     public float minHandling;
     public float maxHandling;
     public float decreaseFactor;
-
 
     [Header("Speed")]
     public float currentSpeed;
@@ -47,6 +48,10 @@ public class PlayerController : MonoBehaviour
     private float startCountdown;
     private MainManager manager;
     private bool isFinished = false;
+
+    private float currentCrowbarRot = 0;
+    private float crowbarRotSpeed = 35f;
+
 
     //EVENTS
     public static event Action OnLeftKey = delegate { };
@@ -106,14 +111,43 @@ public class PlayerController : MonoBehaviour
             frameInput += Vector3.left * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
 
             metalBarRessource -= Time.deltaTime * movementDecreaseFactor;
-            OnLeftKey();
+
+            currentCrowbarRot += Time.deltaTime * crowbarRotSpeed;
+            currentCrowbarRot = Mathf.Clamp(currentCrowbarRot, -30f, 30f);
+
+            crowbar.localRotation = Quaternion.Euler(0f, 0f, currentCrowbarRot);
+            playerVFX.crowbarSparksLeft.Play();
+            playerVFX.crowbarSparksLeft.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
         else if (metalBarRessource > 0.0f && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
         {
-            frameInput += Vector3.right * handling * Mathf.Lerp(1, 0, lastLeftDownTime / (Time.time * decreaseFactor));
+            frameInput += Vector3.right * handling * Mathf.Lerp(1, 0, lastRightDownTime / (Time.time * decreaseFactor));
 
             metalBarRessource -= Time.deltaTime * movementDecreaseFactor;
-            OnRightKey();
+
+            currentCrowbarRot -= Time.deltaTime * crowbarRotSpeed;
+            currentCrowbarRot = Mathf.Clamp(currentCrowbarRot, -30f, 30f);
+
+            crowbar.localRotation = Quaternion.Euler(0f, 0f, currentCrowbarRot);
+            playerVFX.crowbarSparksRight.Play();
+            playerVFX.crowbarSparksRight.transform.rotation = Quaternion.Euler(0f, -270f, 0f);
+        }
+        else
+        {
+            if(currentCrowbarRot > 0)
+            {
+                currentCrowbarRot -= Time.deltaTime * crowbarRotSpeed * 2;
+                currentCrowbarRot = Mathf.Clamp(currentCrowbarRot, 0, 30f);
+
+                crowbar.localRotation = Quaternion.Euler(0f, 0f, currentCrowbarRot);
+            }
+            else
+            {
+                currentCrowbarRot += Time.deltaTime * crowbarRotSpeed * 2;
+                currentCrowbarRot = Mathf.Clamp(currentCrowbarRot, -30f, 0);
+
+                crowbar.localRotation = Quaternion.Euler(0f, 0f, currentCrowbarRot);
+            }
         }
 
         //Speedbooster
@@ -131,6 +165,8 @@ public class PlayerController : MonoBehaviour
 
             currentSpeed -= Time.deltaTime * breakMultiplier;
             metalBarRessource -= Time.deltaTime * breakDecreaseFactor;
+
+            playerVFX.breakSparks.Play();
         }
         else
         {
@@ -158,11 +194,12 @@ public class PlayerController : MonoBehaviour
         if (IsOnSpeedbooster)
             rigid.velocity += transform.up * -2f;
 
-        if(Vector3.Dot(Vector3.up, rigid.velocity.normalized) > 0f)
+        if (Vector3.Dot(Vector3.up, rigid.velocity.normalized) > 0f)
         {
             Debug.Log("Pushing Down");
             rigid.AddForce(transform.up * -1000f, ForceMode.Acceleration);
-        }    }
+        }
+    }
 
     public IEnumerator SlowCart()
     {
