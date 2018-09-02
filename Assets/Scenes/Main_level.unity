@@ -21715,6 +21715,14 @@ Prefab:
       propertyPath: metalbarText
       value: 
       objectReference: {fileID: 1619285745}
+    - target: {fileID: 4440633841069932, guid: 9b29876c604b09248ada660bee1b432f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 252.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440633841069932, guid: 9b29876c604b09248ada660bee1b432f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -130.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b29876c604b09248ada660bee1b432f, type: 2}
   m_IsPrefabAsset: 0
