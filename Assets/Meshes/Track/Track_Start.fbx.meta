@@ -3,17 +3,19 @@ guid: 9e05b0cddfc2e7c4e8885af613c80d9f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Track_Start
-    100002: //RootNode
-    400000: Track_Start
-    400002: //RootNode
-    2100000: Steelfence
-    2100002: lambert1
-    2100004: Track
-    2100006: Metalfence_Stand1
-    2300000: Track_Start
-    3300000: Track_Start
-    4300000: Track_Start
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Streetsign
+    2100002: Steelfence
+    2100004: lambert1
+    2100006: Proptank_2
+    2100008: tire
+    2100010: Track
+    2100012: Barrel_2
+    2100014: Woodblank
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Streetsign4
   externalObjects: {}
   materials:
     importMaterials: 1
