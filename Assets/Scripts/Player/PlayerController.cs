@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform startPoint;
     public Transform crowbar;
     public PlayerVFX playerVFX;
+    public MeshRenderer meshRend;
 
     [Header("Handling")]
     public AnimationCurve handlingCurve;
@@ -220,6 +221,9 @@ public class PlayerController : MonoBehaviour
 
     public void Reset()
     {
+        this.enabled = true;
+        meshRend.enabled = true;
+
         currentSpeed = 0;
         manager.SwitchGameplay(GameState.PLAY);
         rigid.useGravity = true;
