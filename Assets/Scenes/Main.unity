@@ -651,7 +651,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4083230615763554, guid: 9c088ed436054534f99147c384c616fa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4083230615763554, guid: 9c088ed436054534f99147c384c616fa, type: 2}
       propertyPath: m_LocalPosition.y
@@ -695,7 +695,7 @@ GameObject:
   m_Layer: 0
   m_Name: End Track
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1009,7 +1009,7 @@ GameObject:
   m_Layer: 0
   m_Name: Start Track
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2996,7 +2996,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentSpeed: 0
-  accelDiv: 0.9
+  accelDiv: 0.5
+  boostDiv: 0
   minSpeed: 1
   maxSpeed: 50
   dangerSpeed: 40
