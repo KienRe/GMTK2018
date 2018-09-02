@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     public Transform startPoint;
 
     [Header("Handling")]
-    public float handling;
+    public AnimationCurve handlingCurve;
+    public float minHandling;
+    public float maxHandling;
     public float decreaseFactor;
 
 
@@ -80,6 +82,9 @@ public class PlayerController : MonoBehaviour
         }
 
         frameInput = Vector3.zero;
+
+        float t = Remapper.Remap(currentSpeed, minSpeed, maxSpeed, 0, 1);
+        float handling = Mathf.Lerp(minHandling, maxHandling, handlingCurve.Evaluate(t));
 
         //Button Down Timer
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
