@@ -15,7 +15,6 @@ Environment Background
 
 Programming
 Implement Ramp Speed Condition + SpeedText
-Implement Failstate + Restart
 Implement StartCountdown
 Adjust PostProccessing
 Implement rigidbody death explosion
@@ -23,10 +22,7 @@ Implement rigidbody death explosion
 VFX
 Spark Particels on Left/Right + Brake + Side Collision + Landing
 Booster Trail Particels
-Relative FOV to currentSpeed
 Death Explosion
-Motion Blur
-Depth of Field
 
 Design
 Build Level
