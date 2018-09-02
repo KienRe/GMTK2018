@@ -1,23 +1,5 @@
 UI
-Trackprogress
-Crowbar
-Speedometer
-Title
-Icon
 Insturctions in Main Menu
-
-Meshes
-Shopping Kart
-Crowbar Pickup
-Environment Background
-
-Programming
-Implement StartCountdown
-Implement rigidbody death explosion + Death Explosion VFX
-
-VFX
-Spark Particels on Left/Right + Brake
-Booster Trail Particels
 
 Design
 Build Level
