@@ -7,13 +7,14 @@ ModelImporter:
     100002: //RootNode
     400000: Track_Switch
     400002: //RootNode
-    2100000: lambert1
+    2100000: Track
+    2100002: woodfence
     2300000: Track_Switch
     3300000: Track_Switch
     4300000: Track_Switch
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -69,7 +70,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

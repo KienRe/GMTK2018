@@ -4,11 +4,15 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: track_cornerL
     400000: //RootNode
-    2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Track_CornerL
+    400002: track_cornerL
+    2100000: Steelfence
+    2100002: Track
+    2100004: woodfence
+    2300000: track_cornerL
+    3300000: track_cornerL
+    4300000: track_cornerL
   externalObjects: {}
   materials:
     importMaterials: 1

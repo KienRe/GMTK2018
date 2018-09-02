@@ -431,6 +431,7 @@ MonoBehaviour:
   menuCamera: {fileID: 1318284793}
   menuCameraTransform: {fileID: 354831248}
   gameplayCameraTransform: {fileID: 939571158}
+  explosionAudio: {fileID: 0}
 --- !u!1001 &140237852
 Prefab:
   m_ObjectHideFlags: 0
@@ -2646,6 +2647,36 @@ Prefab:
         type: 2}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 224852060292085910, guid: c8041e2d6dd6e37459183add6bff6838,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224768344090987532, guid: c8041e2d6dd6e37459183add6bff6838,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781857389587206, guid: c8041e2d6dd6e37459183add6bff6838,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799777563009008, guid: c8041e2d6dd6e37459183add6bff6838,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114919794814999852, guid: c8041e2d6dd6e37459183add6bff6838,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224474422121899106, guid: c8041e2d6dd6e37459183add6bff6838,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8041e2d6dd6e37459183add6bff6838, type: 2}
@@ -7241,6 +7272,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23518843587814058, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f01ecce89cadfd469ce07e61b53aabb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3311a4ac2f1e0af448314f68a077bc6b, type: 2}
   m_IsPrefabAsset: 0
