@@ -83,6 +83,8 @@ public class JumpBehaviour : MonoBehaviour
         player.IsJumping = false;
         jumpRoutine = null;
         player.rigid.constraints = RigidbodyConstraints.FreezeRotation;
+
+        player.rigid.velocity += Vector3.up * -2f;
     }
 
     private void OnDrawGizmos()

@@ -131,7 +131,12 @@ public class PlayerController : MonoBehaviour
         currentSpeed = Mathf.Clamp(currentSpeed, minSpeed, maxSpeed);
 
         rigid.velocity += frameInput;
+
+
         rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, currentSpeed);
+
+        if (IsOnSpeedbooster)
+            rigid.velocity += transform.up * -2f;
     }
 
     private IEnumerator StartSpeedUp()
