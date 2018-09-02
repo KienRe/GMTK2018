@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Assignments")]
     public Rigidbody rigid;
     public PlayerCamera playerCamera;
+    public Transform startPoint;
 
     [Header("Handling")]
     public float handling;
@@ -142,6 +143,13 @@ public class PlayerController : MonoBehaviour
 
         rigid.velocity += frameInput;
         rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, currentSpeed);
+    }
+
+    public void Reset()
+    {
+        manager.SwitchGameplay(GameState.PLAY);
+        rigid.useGravity = true;
+        transform.position = startPoint.position;
     }
 
     private IEnumerator StartSpeedUp()

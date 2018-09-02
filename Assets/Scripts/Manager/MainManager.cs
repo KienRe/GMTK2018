@@ -52,6 +52,7 @@ public class MainManager : MonoBehaviour
 
                 menuCanvas.SetActive(true);
                 menuCamera.SetActive(true);
+                StartCoroutine(ActivateLostCanvas(false, 0));
                 break;
             case GameState.PLAY:
                 menuCanvas.SetActive(false);
@@ -60,6 +61,7 @@ public class MainManager : MonoBehaviour
                 player.enabled = true;
                 playerCanvas.SetActive(true);
                 gameplayCamera.SetActive(true);
+                StartCoroutine(ActivateLostCanvas(false, 0));
                 break;
 
             case GameState.WON:
@@ -67,7 +69,8 @@ public class MainManager : MonoBehaviour
                 break;
 
             case GameState.LOST:
-                lostCanvas.SetActive(true);
+                playerCanvas.SetActive(false);
+                StartCoroutine(ActivateLostCanvas(true, 3));
                 break;
 
             default:
@@ -105,4 +108,17 @@ public class MainManager : MonoBehaviour
         playerCanvas.SetActive(true);
         gameplayCamera.SetActive(true);
     }
+
+    private IEnumerator ActivateLostCanvas(bool isActive, float delay)
+    {
+        float timer = 0;
+
+        while (timer < delay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        lostCanvas.SetActive(isActive);
+    }
+
 }
