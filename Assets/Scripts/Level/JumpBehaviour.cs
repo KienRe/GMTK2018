@@ -59,6 +59,7 @@ public class JumpBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            PlayerVFX vfx = player.GetComponent<PlayerVFX>();
 
             Vector3 middlePosDown = (endPos - player.transform.position) * 0.5f;
             middlePos = new Vector3(middlePosDown.x, middlePosDown.y + jumpHeight, middlePosDown.z);
@@ -76,7 +77,7 @@ public class JumpBehaviour : MonoBehaviour
 
             if (jumpRoutine == null)
             {
-                jumpRoutine = StartCoroutine(Jump(player, a, b, c, jumpTime));
+                jumpRoutine = StartCoroutine(Jump(player, a, b, c, jumpTime, vfx));
                 player.rigid.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             }
             else
@@ -87,7 +88,7 @@ public class JumpBehaviour : MonoBehaviour
 
     }
 
-    private IEnumerator Jump(PlayerController player, Vector3 a, Vector3 b, Vector3 c, float jumpTime)
+    private IEnumerator Jump(PlayerController player, Vector3 a, Vector3 b, Vector3 c, float jumpTime, PlayerVFX vfx)
     {
         float elapsed = 0f;
 
@@ -109,6 +110,8 @@ public class JumpBehaviour : MonoBehaviour
         player.rigid.constraints = RigidbodyConstraints.FreezeRotation;
 
         player.rigid.velocity += Vector3.up * -2f;
+
+        vfx.landingSparks.Play();
     }
 
     private void OnDrawGizmos()
