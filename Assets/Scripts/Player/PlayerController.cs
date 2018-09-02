@@ -185,6 +185,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            steeringAudio.Stop();
+
             if (currentCrowbarRot > 0)
             {
                 currentCrowbarRot -= Time.deltaTime * crowbarRotSpeed * 2;

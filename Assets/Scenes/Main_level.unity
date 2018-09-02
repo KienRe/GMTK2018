@@ -1608,9 +1608,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fc6494673bfde7a41a511de2982e846d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5269,6 +5269,21 @@ Prefab:
         type: 2}
       propertyPath: jumpWidth
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: jumpHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: failJumpWidth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: minSpeed
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3311a4ac2f1e0af448314f68a077bc6b, type: 2}
@@ -21723,6 +21738,31 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -130.2
       objectReference: {fileID: 0}
+    - target: {fileID: 82896032045026352, guid: 9b29876c604b09248ada660bee1b432f,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82482754112987636, guid: 9b29876c604b09248ada660bee1b432f,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82313273899860120, guid: 9b29876c604b09248ada660bee1b432f,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82896032045026352, guid: 9b29876c604b09248ada660bee1b432f,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 82482754112987636, guid: 9b29876c604b09248ada660bee1b432f,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b29876c604b09248ada660bee1b432f, type: 2}
   m_IsPrefabAsset: 0
@@ -24348,6 +24388,11 @@ Prefab:
     - target: {fileID: 4426540160941432, guid: 3311a4ac2f1e0af448314f68a077bc6b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3274
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: jumpHeight
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3311a4ac2f1e0af448314f68a077bc6b, type: 2}
@@ -29711,17 +29756,37 @@ Prefab:
     - target: {fileID: 114028970342159858, guid: 3311a4ac2f1e0af448314f68a077bc6b,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114028970342159858, guid: 3311a4ac2f1e0af448314f68a077bc6b,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
         type: 2}
       propertyPath: failJumpWidth
-      value: 155
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 65502228583884360, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: jumpWidth
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: jumpHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935536105330516, guid: 3311a4ac2f1e0af448314f68a077bc6b,
+        type: 2}
+      propertyPath: minSpeed
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3311a4ac2f1e0af448314f68a077bc6b, type: 2}

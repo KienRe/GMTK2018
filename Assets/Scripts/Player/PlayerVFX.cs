@@ -29,7 +29,8 @@ public class PlayerVFX : MonoBehaviour
         {
             leftSideSparks.Play();
 
-            player.collisionAudio.Play();
+            if (!player.collisionAudio.isPlaying)
+                player.collisionAudio.Play();
         }
 
 
@@ -37,7 +38,8 @@ public class PlayerVFX : MonoBehaviour
         {
             rightSideSparks.Play();
 
-            player.collisionAudio.Play();
+            if (!player.collisionAudio.isPlaying)
+                player.collisionAudio.Play();
         }
     }
 }
