@@ -152,8 +152,15 @@ public class PlayerController : MonoBehaviour
 
         rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, currentSpeed);
 
+        //Press player down
         if (IsOnSpeedbooster)
             rigid.velocity += transform.up * -2f;
+
+        if(Vector3.Dot(Vector3.up, rigid.velocity.normalized) > 0f)
+        {
+            Debug.Log("Pushing Down");
+            rigid.AddForce(transform.up * -1000f, ForceMode.Acceleration);
+        }
     }
 
     public void Reset()
@@ -183,15 +190,14 @@ public class PlayerController : MonoBehaviour
         startRoutine = null;
     }
 
-    //private void OnGUI()
-    //{
-    //    GUI.Label(new Rect(0, 0, 200, 50), "Speed:" + rigid.velocity.z);
-    //    GUI.Label(new Rect(0, 100, 200, 50), "Metal Bar Ressource:" + metalBarRessource);
-    //    GUI.Label(new Rect(0, 200, 200, 50), "IsSpeedBooster:" + IsOnSpeedbooster);
+    private void OnGUI()
+    {
+        //GUI.Label(new Rect(0, 100, 200, 50), "Metal Bar Ressource:" + metalBarRessource);
+        //GUI.Label(new Rect(0, 200, 200, 50), "IsSpeedBooster:" + IsOnSpeedbooster);
 
-    //    if (startRoutine != null)
-    //    {
-    //        GUI.Label(new Rect(960, 540, 100, 50), "Countdown   " + startCountdown);
-    //    }
-    //}
+        //if (startRoutine != null)
+        //{
+        //    GUI.Label(new Rect(960, 540, 100, 50), "Countdown   " + startCountdown);
+        //}
+    }
 }
