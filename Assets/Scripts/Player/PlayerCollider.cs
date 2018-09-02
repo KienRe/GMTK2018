@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
-    {
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.transform.CompareTag("Pickup"))

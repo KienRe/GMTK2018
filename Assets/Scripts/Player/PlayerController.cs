@@ -186,6 +186,7 @@ public class PlayerController : MonoBehaviour
         currentSpeed = 0;
         manager.SwitchGameplay(GameState.PLAY);
         rigid.useGravity = true;
+        isFinished = false;
         transform.rotation = Quaternion.identity;
         transform.position = startPoint.position;
         startRoutine = StartCoroutine(StartSpeedUp());

@@ -6,7 +6,7 @@ public class MetalBar : MonoBehaviour
 {
     [Header("Settings")]
     public float floatHeight = 2f;
-
+    public float rotSpeed = 20f;
     //PRIVATE
     private Vector3 startPos;
 
@@ -22,6 +22,7 @@ public class MetalBar : MonoBehaviour
     {
         Vector3 floatVec = transform.up * (Mathf.Sin(Time.time) + 1) * floatHeight;
         transform.position = new Vector3(startPos.x + floatVec.x, startPos.y + floatVec.y, startPos.z + floatVec.z);
+        transform.rotation *= Quaternion.Euler(0, rotSpeed * Time.deltaTime, 0);
     }
 
     public void OnTriggerEnter(Collider other)
