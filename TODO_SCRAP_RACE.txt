@@ -16,7 +16,7 @@ Implement StartCountdown
 Implement rigidbody death explosion + Death Explosion VFX
 
 VFX
-Spark Particels on Left/Right + Brake + Side Collision + Landing
+Spark Particels on Left/Right + Brake
 Booster Trail Particels
 
 Design
