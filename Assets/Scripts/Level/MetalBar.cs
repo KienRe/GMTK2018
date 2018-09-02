@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class MetalBar : MonoBehaviour
@@ -31,6 +32,5 @@ public class MetalBar : MonoBehaviour
             Debug.Log("Metal Bar has been picked up!");
             gameObject.SetActive(false);
         }
-
     }
 }

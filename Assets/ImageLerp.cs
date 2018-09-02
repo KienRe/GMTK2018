@@ -10,11 +10,6 @@ public class ImageLerp : MonoBehaviour
 
     public Color c1, c2;
 
-    private void Start()
-    {
-        StartCoroutine(PanelFlash());
-    }
-
     public IEnumerator PanelFlash()
     {
         Image image = GetComponent<Image>();
