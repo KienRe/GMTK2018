@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum GameState
 {
+    NONE,
     MENU,
     PLAY,
     WON,
@@ -29,7 +30,7 @@ public class MainManager : MonoBehaviour
     public Transform menuCameraTransform;
     public Transform gameplayCameraTransform;
 
-    private GameState gameState;
+    private GameState gameState = GameState.NONE;
 
     private MetalBar[] bars;
     public AudioSource explosionAudio;
@@ -53,6 +54,7 @@ public class MainManager : MonoBehaviour
         {
             case GameState.MENU:
                 player.enabled = false;
+                player.rigid.constraints = RigidbodyConstraints.FreezeAll;
                 playerCanvas.SetActive(false);
                 gameplayCamera.SetActive(false);
 
@@ -61,6 +63,9 @@ public class MainManager : MonoBehaviour
                 lostCanvas.SetActive(false);
                 break;
             case GameState.PLAY:
+                player.rigid.constraints = RigidbodyConstraints.None;
+                player.rigid.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
                 menuCanvas.SetActive(false);
                 menuCamera.SetActive(false);
 
@@ -145,6 +150,9 @@ public class MainManager : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        player.rigid.constraints = RigidbodyConstraints.None;
+        player.rigid.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
         menuCamera.SetActive(false);
         player.enabled = true;
