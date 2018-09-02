@@ -642,27 +642,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 223390399355023548, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 534669904}
     - target: {fileID: 1904810313776276, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
       propertyPath: m_Name
       value: JumpTrigger (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114648286076074440, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
+    - target: {fileID: 114237815291174590, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
         type: 2}
-      propertyPath: jumpHeight
-      value: 30
+      propertyPath: m_havePropertiesChanged
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114648286076074440, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
+    - target: {fileID: 114237815291174590, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
         type: 2}
-      propertyPath: jumpWidth
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 18.438
-      objectReference: {fileID: 0}
-    - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.0445213
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
@@ -5012,6 +5009,16 @@ Prefab:
         type: 2}
       propertyPath: jumpTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237815291174590, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237815291174590, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
