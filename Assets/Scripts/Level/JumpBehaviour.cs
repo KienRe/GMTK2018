@@ -51,9 +51,14 @@ public class JumpBehaviour : MonoBehaviour
             player.IsJumping = true;
 
             if (jumpRoutine == null)
+            {
                 jumpRoutine = StartCoroutine(Jump(player, a, b, c, jumpTime));
+                player.rigid.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+            }
             else
+            {
                 Debug.Log("Cant start jump routine again!");
+            }
         }
 
     }
@@ -77,6 +82,7 @@ public class JumpBehaviour : MonoBehaviour
 
         player.IsJumping = false;
         jumpRoutine = null;
+        player.rigid.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void OnDrawGizmos()

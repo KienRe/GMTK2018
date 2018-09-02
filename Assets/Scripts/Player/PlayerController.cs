@@ -119,8 +119,6 @@ public class PlayerController : MonoBehaviour
             //When braking the acceleration is slowed for brakeGraceDuration
             if (lastBrakeTime + brakeGraceDuration > Time.time)
             {
-                Debug.Log("Grace Brake Time");
-
                 currentSpeed += Time.deltaTime * brakeGraceModifier;
             }
             //Normal acceleration
