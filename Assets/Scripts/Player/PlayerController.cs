@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
             manager.SwitchGameplay(GameState.LOST);
             rigid.velocity = Vector3.zero;
             rigid.useGravity = false;
+            return;
         }
 
         frameInput = Vector3.zero;
@@ -152,9 +153,13 @@ public class PlayerController : MonoBehaviour
 
     public void Reset()
     {
+        currentSpeed = 0;
         manager.SwitchGameplay(GameState.PLAY);
         rigid.useGravity = true;
+        transform.rotation = Quaternion.identity;
         transform.position = startPoint.position;
+        startRoutine = StartCoroutine(StartSpeedUp());
+        rigid.constraints = RigidbodyConstraints.FreezeRotationY & RigidbodyConstraints.FreezeRotationZ;
     }
 
     private IEnumerator StartSpeedUp()
@@ -173,15 +178,15 @@ public class PlayerController : MonoBehaviour
         startRoutine = null;
     }
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 200, 50), "Speed:" + rigid.velocity.z);
-        GUI.Label(new Rect(0, 100, 200, 50), "Metal Bar Ressource:" + metalBarRessource);
-        GUI.Label(new Rect(0, 200, 200, 50), "IsSpeedBooster:" + IsOnSpeedbooster);
+    //private void OnGUI()
+    //{
+    //    GUI.Label(new Rect(0, 0, 200, 50), "Speed:" + rigid.velocity.z);
+    //    GUI.Label(new Rect(0, 100, 200, 50), "Metal Bar Ressource:" + metalBarRessource);
+    //    GUI.Label(new Rect(0, 200, 200, 50), "IsSpeedBooster:" + IsOnSpeedbooster);
 
-        if (startRoutine != null)
-        {
-            GUI.Label(new Rect(960, 540, 100, 50), "Countdown   " + startCountdown);
-        }
-    }
+    //    if (startRoutine != null)
+    //    {
+    //        GUI.Label(new Rect(960, 540, 100, 50), "Countdown   " + startCountdown);
+    //    }
+    //}
 }

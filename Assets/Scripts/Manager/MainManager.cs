@@ -30,19 +30,23 @@ public class MainManager : MonoBehaviour
 
     private GameState gameState;
 
+    private MetalBar[] bars;
+
     private void Awake()
     {
-        gameState = defaultGameState;
-
         menuCamera.transform.position = menuCameraTransform.position;
         gameplayCamera.transform.position = gameplayCameraTransform.position;
 
-        SwitchGameplay(gameState);
+        SwitchGameplay(defaultGameState);
+        bars = FindObjectsOfType<MetalBar>();
     }
 
     public void SwitchGameplay(GameState state)
     {
+        if (state == gameState) return;
+
         gameState = state;
+
         switch (state)
         {
             case GameState.MENU:
@@ -52,7 +56,7 @@ public class MainManager : MonoBehaviour
 
                 menuCanvas.SetActive(true);
                 menuCamera.SetActive(true);
-                StartCoroutine(ActivateLostCanvas(false, 0));
+                lostCanvas.SetActive(false);
                 break;
             case GameState.PLAY:
                 menuCanvas.SetActive(false);
@@ -61,7 +65,7 @@ public class MainManager : MonoBehaviour
                 player.enabled = true;
                 playerCanvas.SetActive(true);
                 gameplayCamera.SetActive(true);
-                StartCoroutine(ActivateLostCanvas(false, 0));
+                lostCanvas.SetActive(false);
                 break;
 
             case GameState.WON:
@@ -70,7 +74,9 @@ public class MainManager : MonoBehaviour
 
             case GameState.LOST:
                 playerCanvas.SetActive(false);
-                StartCoroutine(ActivateLostCanvas(true, 3));
+                float delay = 3;
+                StartCoroutine(ActivateLostCanvas(true, delay));
+                StartCoroutine(ResetGamePlay(delay + lostCanvas.GetComponentInChildren<ImageLerp>().duration));
                 break;
 
             default:
@@ -86,6 +92,23 @@ public class MainManager : MonoBehaviour
     public void OnExitButtonClick()
     {
         Application.Quit();
+    }
+
+    private IEnumerator ResetGamePlay(float delay)
+    {
+        float timer = 0;
+        while (timer < delay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        SwitchGameplay(GameState.PLAY);
+
+        foreach (var item in bars)
+        {
+            item.gameObject.SetActive(true);
+        }
+        player.Reset();
     }
 
     private IEnumerator SwitchToGameplay()
@@ -119,6 +142,8 @@ public class MainManager : MonoBehaviour
             yield return null;
         }
         lostCanvas.SetActive(isActive);
+        if (isActive)
+            lostCanvas.GetComponentInChildren<ImageLerp>().StartCoroutine(lostCanvas.GetComponentInChildren<ImageLerp>().PanelFlash());
     }
 
 }
