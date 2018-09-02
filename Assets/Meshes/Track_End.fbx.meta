@@ -7,13 +7,13 @@ ModelImporter:
     100002: Trak_End
     400000: //RootNode
     400002: Trak_End
-    2100000: lambert1
+    2100000: lambert3
     2300000: Trak_End
     3300000: Trak_End
     4300000: Trak_End
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -69,7 +69,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
