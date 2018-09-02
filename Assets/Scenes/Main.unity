@@ -840,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175828204}
   - component: {fileID: 175828203}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PostProccessVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,8 +1934,8 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
-  - component: {fileID: 534669906}
   - component: {fileID: 534669907}
+  - component: {fileID: 534669906}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: Player
@@ -2070,6 +2070,175 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 595ba11159e951343a6c9aafdd218d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fovCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.13848825
+      outSlope: 0.13848825
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1215143
+    - serializedVersion: 3
+      time: 0.4998154
+      value: 0.5057561
+      inSlope: 0.50599164
+      outSlope: 0.50599164
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13080801
+      outWeight: 0.19124916
+    - serializedVersion: 3
+      time: 0.9533945
+      value: 0.80965614
+      inSlope: 2.3770761
+      outSlope: 2.3770761
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minFOV: 60
+  maxFOV: 140
+  motionBlurCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minShutterAngle: 0
+  maxShutterAngle: 320
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.65
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.2
+      inSlope: 1.2561474
+      outSlope: 1.2561474
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19749165
+      outWeight: 0.56670415
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minShake: 0
+  maxShake: 0.5
+  player: {fileID: 1753688301}
+  volume: {fileID: 175828203}
+--- !u!1 &540014209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 540014211}
+  - component: {fileID: 540014210}
+  - component: {fileID: 540014212}
+  m_Layer: 0
+  m_Name: RotationTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &540014210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540014209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22, y: 10, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &540014211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540014209}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: -13.19, z: 61.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &540014212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540014209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33cfb90f4906464f880126008bb83c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &558737554
@@ -6205,18 +6374,11 @@ MonoBehaviour:
   playerCamera: {fileID: 534669907}
   handling: 0.4
   decreaseFactor: 2
-  handlingModifierCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   currentSpeed: 0
   accelDiv: 0.5
-  boostDiv: 0.05
+  boostDiv: 0.1
   minSpeed: 1
   maxSpeed: 50
-  dangerSpeed: 40
   killSpeed: 49
   breakMultiplier: 10
   brakeGraceDuration: 1
