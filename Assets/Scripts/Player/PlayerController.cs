@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.identity;
         transform.position = startPoint.position;
         startRoutine = StartCoroutine(StartSpeedUp());
+        metalBarRessource = 1f;
         rigid.constraints = RigidbodyConstraints.FreezeRotationY & RigidbodyConstraints.FreezeRotationZ;
     }
 

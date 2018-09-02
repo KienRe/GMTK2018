@@ -13,10 +13,7 @@ public class PlayerCollider : MonoBehaviour
         if (!other.transform.CompareTag("Pickup"))
         {
             Debug.LogFormat("Killed by {0}", other.transform.name);
-        }
-        else
-        {
-            Debug.LogFormat("Killed not by {0}", other.transform.name);
+            FindObjectOfType<MainManager>().SwitchGameplay(GameState.LOST);
         }
     }
 }
