@@ -83,7 +83,11 @@ public class MainManager : MonoBehaviour
             case GameState.WON:
 
                 player.enabled = false;
-                wonCanvas.SetActive(true);
+                playerCanvas.SetActive(false);
+                float delay = 0;
+                StartCoroutine(ActivateWinCanvas(true, delay));
+                StartCoroutine(ResetGamePlay(delay + wonCanvas.GetComponentInChildren<ImageLerp>().duration));
+
                 break;
 
             case GameState.LOST:
@@ -103,7 +107,7 @@ public class MainManager : MonoBehaviour
                 rigid.AddExplosionForce(14f, explosionPlayer.transform.position - Vector3.forward * 3f, 3f);
 
                 playerCanvas.SetActive(false);
-                float delay = 3;
+                delay = 3;
                 explosionAudio.Play();
                 StartCoroutine(ActivateLostCanvas(true, delay));
                 StartCoroutine(ResetGamePlay(delay + lostCanvas.GetComponentInChildren<ImageLerp>().duration));
@@ -178,5 +182,20 @@ public class MainManager : MonoBehaviour
         if (isActive)
             lostCanvas.GetComponentInChildren<ImageLerp>().StartCoroutine(lostCanvas.GetComponentInChildren<ImageLerp>().PanelFlash());
     }
+
+    private IEnumerator ActivateWinCanvas(bool isActive, float delay)
+    {
+        float timer = 0;
+
+        while (timer < delay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        wonCanvas.SetActive(isActive);
+        if (isActive)
+            wonCanvas.GetComponentInChildren<ImageLerp>().StartCoroutine(wonCanvas.GetComponentInChildren<ImageLerp>().PanelFlash());
+    }
+
 
 }
