@@ -782,6 +782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120735822}
   - component: {fileID: 120735823}
+  - component: {fileID: 120735824}
   m_Layer: 0
   m_Name: MainManager
   m_TagString: Untagged
@@ -825,6 +826,102 @@ MonoBehaviour:
   menuCamera: {fileID: 1318284793}
   menuCameraTransform: {fileID: 535553378}
   gameplayCameraTransform: {fileID: 1857937376}
+  explosionAudio: {fileID: 120735824}
+--- !u!82 &120735824
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120735821}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bb95eaf580382754a93d4ea026a2f488, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &123534225
 GameObject:
   m_ObjectHideFlags: 0
@@ -12338,7 +12435,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1318284796}
   - component: {fileID: 1318284795}
-  - component: {fileID: 1318284794}
   - component: {fileID: 1318284797}
   m_Layer: 8
   m_Name: MenuCamera
@@ -12347,13 +12443,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1318284794
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1318284793}
-  m_Enabled: 1
 --- !u!20 &1318284795
 Camera:
   m_ObjectHideFlags: 0
@@ -14961,6 +15050,11 @@ Prefab:
       propertyPath: startPoint
       value: 
       objectReference: {fileID: 1214908658}
+    - target: {fileID: 114912740208273114, guid: 9b29876c604b09248ada660bee1b432f,
+        type: 2}
+      propertyPath: metalbarText
+      value: 
+      objectReference: {fileID: 1619285745}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b29876c604b09248ada660bee1b432f, type: 2}
   m_IsPrefabAsset: 0
@@ -15326,6 +15420,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4334381059623006, guid: ec882320dc2fe1e45b2672f4ad95b6a6,
     type: 2}
   m_PrefabInternal: {fileID: 499487962}
+--- !u!1 &1619285745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1507218322414286, guid: c8041e2d6dd6e37459183add6bff6838,
+    type: 2}
+  m_PrefabInternal: {fileID: 2098791664}
 --- !u!1001 &1622984919
 Prefab:
   m_ObjectHideFlags: 0
