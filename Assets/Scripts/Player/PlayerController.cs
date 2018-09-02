@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private Coroutine startRoutine;
     private float startCountdown;
     private MainManager manager;
+    private bool isFinished = false;
 
     //EVENTS
     public static event Action OnLeftKey = delegate { };
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (startRoutine != null) return;
-        if (IsJumping) return;
+        if (IsJumping || isFinished) return;
 
         if (currentSpeed > killSpeed)
         {
@@ -154,6 +155,24 @@ public class PlayerController : MonoBehaviour
 
         if (IsOnSpeedbooster)
             rigid.velocity += transform.up * -2f;
+
+    }
+
+    public IEnumerator SlowCart()
+    {
+        isFinished = true;
+        float timeForEffect = 2f;
+        startCountdown = 0f;
+
+        while (startCountdown < timeForEffect)
+        {
+            rigid.velocity = transform.forward * Mathf.Lerp(currentSpeed, 0, startCountdown / timeForEffect);
+            startCountdown += Time.deltaTime;
+            yield return null;
+        }
+
+        currentSpeed = 0;
+        Debug.Log("YOU WON!");
     }
 
     public void Reset()
