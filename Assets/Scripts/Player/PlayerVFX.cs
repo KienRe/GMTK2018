@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerVFX : MonoBehaviour
 {
+    private PlayerController player;
+
     [Header("Scene Assignmnets")]
     public ParticleSystem leftSideSparks;
     public ParticleSystem rightSideSparks;
@@ -15,13 +17,27 @@ public class PlayerVFX : MonoBehaviour
     public bool IsLeftSideCol { get; set; }
     public bool IsRightSideCol { get; set; }
 
+    private void Start()
+    {
+        player = GetComponent<PlayerController>();
+    }
+
 
     private void Update()
     {
         if (IsLeftSideCol)
+        {
             leftSideSparks.Play();
 
+            player.collisionAudio.Play();
+        }
+
+
         if (IsRightSideCol)
+        {
             rightSideSparks.Play();
+
+            player.collisionAudio.Play();
+        }
     }
 }

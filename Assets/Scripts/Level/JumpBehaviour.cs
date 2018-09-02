@@ -59,6 +59,9 @@ public class JumpBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
+            player.jumpAudio.Play();
+
             PlayerVFX vfx = player.GetComponent<PlayerVFX>();
 
             Vector3 middlePosDown = (endPos - player.transform.position) * 0.5f;
