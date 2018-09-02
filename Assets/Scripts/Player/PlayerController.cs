@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [Header("Handling")]
     public float handling;
     public float decreaseFactor;
-    public AnimationCurve handlingModifierCurve;
 
     [Header("Speed")]
     public float currentSpeed;
@@ -21,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;
 
     [Header("Speed Threshold")]
-    public float dangerSpeed;
     public float killSpeed;
 
     [Header("Brake")]
@@ -70,11 +68,6 @@ public class PlayerController : MonoBehaviour
     {
         if (startRoutine != null) return;
         if (IsJumping) return;
-
-        if (currentSpeed > dangerSpeed)
-        {
-            playerCamera.Shake(1f, 0.1f, 0.4f);
-        }
 
         frameInput = Vector3.zero;
 
