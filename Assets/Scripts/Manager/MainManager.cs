@@ -32,6 +32,7 @@ public class MainManager : MonoBehaviour
     private GameState gameState;
 
     private MetalBar[] bars;
+    public AudioSource explosionAudio;
 
     private void Awake()
     {
@@ -83,19 +84,17 @@ public class MainManager : MonoBehaviour
                 player.currentSpeed = 0;
 
                 player.rigid.velocity = Vector3.zero;
-
+                player.metalbar.SetActive(false);
                 GameObject explPlayer = Instantiate(explosionPlayer);
                 explPlayer.transform.position = player.transform.position;
-
-
 
                 Rigidbody rigid = explPlayer.GetComponentInChildren<Rigidbody>();
                 rigid.transform.DetachChildren();
                 rigid.AddExplosionForce(14f, explosionPlayer.transform.position - Vector3.forward * 3f, 3f);
 
-
                 playerCanvas.SetActive(false);
                 float delay = 3;
+                explosionAudio.Play();
                 StartCoroutine(ActivateLostCanvas(true, delay));
                 StartCoroutine(ResetGamePlay(delay + lostCanvas.GetComponentInChildren<ImageLerp>().duration));
                 break;

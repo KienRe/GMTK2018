@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Transform crowbar;
     public PlayerVFX playerVFX;
     public MeshRenderer meshRend;
+    public GameObject metalbarText;
+    public GameObject metalbar;
 
     [Header("Handling")]
     public AnimationCurve handlingCurve;
@@ -37,6 +39,12 @@ public class PlayerController : MonoBehaviour
     public float movementDecreaseFactor;
     public float breakDecreaseFactor;
     public float metalBarRessource;
+    public Material crowbarMat;
+
+    [Header("Audio")]
+    public AudioSource steeringAudio;
+    public AudioSource speedBoosterAudio;
+    public AudioSource pickupAudio;
 
     //PRIVATE
     private Vector3 frameInput;
@@ -52,7 +60,9 @@ public class PlayerController : MonoBehaviour
 
     private float currentCrowbarRot = 0;
     private float crowbarRotSpeed = 35f;
+    private bool isOnSpeedbooster;
 
+    private float timer;
 
     //EVENTS
     public static event Action OnLeftKey = delegate { };
@@ -61,12 +71,36 @@ public class PlayerController : MonoBehaviour
 
     //PROPERTIES
     public bool IsJumping { get; set; }
-    public bool IsOnSpeedbooster { get; set; }
+    public bool IsOnSpeedbooster
+    {
+        get
+        {
+            return isOnSpeedbooster;
+        }
+        set
+        {
+            isOnSpeedbooster = value;
+            if (value)
+            {
+                if (!speedBoosterAudio.isPlaying)
+                {
+                    speedBoosterAudio.Play();
+                }
+            }
+            else
+            {
+                if (speedBoosterAudio.isPlaying)
+                {
+                    speedBoosterAudio.Stop();
+                }
+            }
+        }
+    }
 
     private void Start()
     {
         rigid.velocity = new Vector3(0f, 0f, 10f);
-
+        //crowbarMat = crowbarSteer.GetComponent<MeshRenderer>().material;
         MetalBar.OnMetalBarPickup += () =>
         {
             metalBarRessource += 0.5f;
@@ -74,6 +108,7 @@ public class PlayerController : MonoBehaviour
         };
         manager = FindObjectOfType<MainManager>();
         startRoutine = StartCoroutine(StartSpeedUp());
+        metalbarText.SetActive(false);
     }
 
     private void Update()
@@ -119,6 +154,12 @@ public class PlayerController : MonoBehaviour
             crowbar.localRotation = Quaternion.Euler(0f, 0f, currentCrowbarRot);
             playerVFX.crowbarSparksLeft.Play();
             playerVFX.crowbarSparksLeft.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+
+            if (!steeringAudio.isPlaying)
+            {
+                Debug.Log("Audio");
+                steeringAudio.Play();
+            }
         }
         else if (metalBarRessource > 0.0f && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
         {
@@ -132,10 +173,16 @@ public class PlayerController : MonoBehaviour
             crowbar.localRotation = Quaternion.Euler(0f, 0f, currentCrowbarRot);
             playerVFX.crowbarSparksRight.Play();
             playerVFX.crowbarSparksRight.transform.rotation = Quaternion.Euler(0f, -270f, 0f);
+
+            if (!steeringAudio.isPlaying)
+            {
+                Debug.Log("Audio");
+                steeringAudio.Play();
+            }
         }
         else
         {
-            if(currentCrowbarRot > 0)
+            if (currentCrowbarRot > 0)
             {
                 currentCrowbarRot -= Time.deltaTime * crowbarRotSpeed * 2;
                 currentCrowbarRot = Mathf.Clamp(currentCrowbarRot, 0, 30f);
@@ -152,7 +199,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Speedbooster
-        if (IsOnSpeedbooster)
+        if (isOnSpeedbooster)
         {
             currentSpeed += Time.deltaTime / boostDiv;
         }
@@ -184,6 +231,29 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (metalBarRessource > 0)
+        {
+            timer = 0;
+            if (metalbarText.activeSelf)
+            {
+                metalbarText.SetActive(false);
+            }
+            float value = Remapper.Remap(metalBarRessource, 0, 1, 0, 0.8f);
+            crowbarMat.SetFloat("_OpacityEmission", value);
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            if (timer % 1f < 0.5f)
+            {
+                metalbarText.SetActive(true);
+            }
+            else
+            {
+                metalbarText.SetActive(false);
+            }
+        }
+
         currentSpeed = Mathf.Clamp(currentSpeed, minSpeed, maxSpeed);
 
         rigid.velocity += frameInput;
@@ -192,7 +262,7 @@ public class PlayerController : MonoBehaviour
         rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, currentSpeed);
 
         //Press player down
-        if (IsOnSpeedbooster)
+        if (isOnSpeedbooster)
             rigid.velocity += transform.up * -2f;
 
         if (Vector3.Dot(Vector3.up, rigid.velocity.normalized) > 0f)
@@ -233,6 +303,11 @@ public class PlayerController : MonoBehaviour
         startRoutine = StartCoroutine(StartSpeedUp());
         metalBarRessource = 1f;
         rigid.constraints = RigidbodyConstraints.FreezeRotationY & RigidbodyConstraints.FreezeRotationZ;
+        float value = Remapper.Remap(metalBarRessource, 0, 1, 0, 0.8f);
+        crowbarMat.SetFloat("_OpacityEmission", value);
+        timer = 0;
+        metalbarText.SetActive(false);
+        metalbar.SetActive(true);
     }
 
     private IEnumerator StartSpeedUp()
