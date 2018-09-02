@@ -14,21 +14,14 @@ public class Speedbooster : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            player = GetComponent<PlayerController>();
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
+            player = other.GetComponent<PlayerController>();
             player.IsOnSpeedbooster = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (player != null && other.gameObject.tag == "Player")
         {
             player.IsOnSpeedbooster = false;
             player = null;
