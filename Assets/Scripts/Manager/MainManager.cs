@@ -20,6 +20,7 @@ public class MainManager : MonoBehaviour
     public GameObject menuCanvas;
     public GameObject lostCanvas;
     public GameObject wonCanvas;
+    public GameObject explosionPlayer;
 
     public GameObject gameplayCamera;
     public GameObject menuCamera;
@@ -69,10 +70,30 @@ public class MainManager : MonoBehaviour
                 break;
 
             case GameState.WON:
+
+                player.enabled = false;
                 wonCanvas.SetActive(true);
                 break;
 
             case GameState.LOST:
+
+                player.enabled = false;
+
+                player.meshRend.enabled = false;
+                player.currentSpeed = 0;
+
+                player.rigid.velocity = Vector3.zero;
+
+                GameObject explPlayer = Instantiate(explosionPlayer);
+                explPlayer.transform.position = player.transform.position;
+
+
+
+                Rigidbody rigid = explPlayer.GetComponentInChildren<Rigidbody>();
+                rigid.transform.DetachChildren();
+                rigid.AddExplosionForce(14f, explosionPlayer.transform.position - Vector3.forward * 3f, 3f);
+
+
                 playerCanvas.SetActive(false);
                 float delay = 3;
                 StartCoroutine(ActivateLostCanvas(true, delay));
