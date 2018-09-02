@@ -16,7 +16,6 @@ Environment Background
 Programming
 Implement Ramp Speed Condition + SpeedText
 Implement StartCountdown
-Adjust PostProccessing
 Implement rigidbody death explosion
 
 VFX
