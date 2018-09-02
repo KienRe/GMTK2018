@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(BoxCollider))]
 public class JumpBehaviour : MonoBehaviour
@@ -9,9 +10,15 @@ public class JumpBehaviour : MonoBehaviour
     public float jumpWidth;
     public float jumpTime;
 
+    [Header("Jump Condition")]
+    public TextMeshProUGUI text;
+    public float failJumpWidth;
+    public float minSpeed;
+
     private Vector3 startPos;
     private Vector3 middlePos;
     private Vector3 endPos;
+    private Vector3 endPosFail;
 
     private Vector3 endRot = new Vector3(45f, 0f, 0f);
 
@@ -23,11 +30,14 @@ public class JumpBehaviour : MonoBehaviour
     {
         GetComponent<BoxCollider>().isTrigger = true;
 
+        text.text = minSpeed.ToString();
+
         RaycastHit hit;
 
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + jumpWidth), Vector3.down, out hit))
         {
             endPos = hit.point;
+            endPosFail = new Vector3(transform.position.x, endPos.y, transform.position.z + failJumpWidth);
         }
         else
         {
@@ -56,6 +66,11 @@ public class JumpBehaviour : MonoBehaviour
             Vector3 a = player.transform.position;
             Vector3 b = player.transform.position + middlePos;
             Vector3 c = endPos;
+
+            if (player.currentSpeed < minSpeed)
+            {
+                c = endPosFail;
+            }
 
             player.IsJumping = true;
 
@@ -109,14 +124,19 @@ public class JumpBehaviour : MonoBehaviour
             Debug.LogError("Cant find EndPoint!");
         }
 
-
+        Vector3 endPosFail = new Vector3(transform.position.x, endPos.y, transform.position.z + failJumpWidth);
 
         Vector3 middlePosDown = (endPos - transform.position) * 0.5f;
         middlePos = new Vector3(middlePosDown.x, middlePosDown.y + jumpHeight, middlePosDown.z);
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + middlePos);
         Gizmos.DrawLine(transform.position + middlePos, endPos);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position + middlePos, endPosFail);
+
+
     }
 
 }
