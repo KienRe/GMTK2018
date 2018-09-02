@@ -4,8 +4,9 @@ using UnityEngine;
 public enum GameState
 {
     MENU,
-    PLAYING,
-    WON
+    PLAY,
+    WON,
+    LOST
 }
 
 public class MainManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class MainManager : MonoBehaviour
     public PlayerController player;
     public GameObject playerCanvas;
     public GameObject menuCanvas;
+    public GameObject lostCanvas;
+    public GameObject wonCanvas;
 
     public GameObject gameplayCamera;
     public GameObject menuCamera;
@@ -34,7 +37,13 @@ public class MainManager : MonoBehaviour
         menuCamera.transform.position = menuCameraTransform.position;
         gameplayCamera.transform.position = gameplayCameraTransform.position;
 
-        switch (gameState)
+        SwitchGameplay(gameState);
+    }
+
+    public void SwitchGameplay(GameState state)
+    {
+        gameState = state;
+        switch (state)
         {
             case GameState.MENU:
                 player.enabled = false;
@@ -44,7 +53,7 @@ public class MainManager : MonoBehaviour
                 menuCanvas.SetActive(true);
                 menuCamera.SetActive(true);
                 break;
-            case GameState.PLAYING:
+            case GameState.PLAY:
                 menuCanvas.SetActive(false);
                 menuCamera.SetActive(false);
 
@@ -52,6 +61,15 @@ public class MainManager : MonoBehaviour
                 playerCanvas.SetActive(true);
                 gameplayCamera.SetActive(true);
                 break;
+
+            case GameState.WON:
+                wonCanvas.SetActive(true);
+                break;
+
+            case GameState.LOST:
+                lostCanvas.SetActive(true);
+                break;
+
             default:
                 break;
         }

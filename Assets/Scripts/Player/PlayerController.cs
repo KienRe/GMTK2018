@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine startRoutine;
     private float startCountdown;
+    private MainManager manager;
 
     //EVENTS
     public static event Action OnLeftKey = delegate { };
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
             metalBarRessource += 0.5f;
             metalBarRessource = Mathf.Clamp01(metalBarRessource);
         };
-
+        manager = FindObjectOfType<MainManager>();
         startRoutine = StartCoroutine(StartSpeedUp());
     }
 
@@ -74,6 +75,13 @@ public class PlayerController : MonoBehaviour
         if (currentSpeed > dangerSpeed)
         {
             playerCamera.Shake(1f, 0.1f, 0.4f);
+        }
+
+        if (currentSpeed > killSpeed)
+        {
+            manager.SwitchGameplay(GameState.LOST);
+            rigid.velocity = Vector3.zero;
+            rigid.useGravity = false;
         }
 
         frameInput = Vector3.zero;
