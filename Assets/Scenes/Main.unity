@@ -612,15 +612,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.35
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -526.48
+      value: -523.77
       objectReference: {fileID: 0}
     - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 582.85
+      value: 575.09
       objectReference: {fileID: 0}
     - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -655,6 +655,14 @@ Prefab:
         type: 2}
       propertyPath: jumpWidth
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 18.438
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135420806223192, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4.0445213
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4ebf3ece0b0434ab5cbc1072385f6c, type: 2}
@@ -6909,7 +6917,32 @@ MonoBehaviour:
   rigid: {fileID: 1753688302}
   playerCamera: {fileID: 534669907}
   startPoint: {fileID: 1214908658}
-  handling: 0.4
+  handlingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minHandling: 0.4
+  maxHandling: 1.5
   decreaseFactor: 2
   currentSpeed: 0
   accelDiv: 0.5
