@@ -4,24 +4,20 @@ Crowbar
 Speedometer
 Title
 Icon
-Buttons
 Insturctions in Main Menu
 
 Meshes
-Dude
 Shopping Kart
 Crowbar Pickup
 Environment Background
 
 Programming
-Implement Ramp Speed Condition + SpeedText
 Implement StartCountdown
-Implement rigidbody death explosion
+Implement rigidbody death explosion + Death Explosion VFX
 
 VFX
-Spark Particels on Left/Right + Brake + Side Collision + Landing
+Spark Particels on Left/Right + Brake
 Booster Trail Particels
-Death Explosion
 
 Design
 Build Level
@@ -35,6 +31,3 @@ Crash Sounds
 Squeak Sounds on Left/Right/Brake
 Pickup Sounds
 Booster Sounds
-
-Nice to Have
-Implement Slowmotion

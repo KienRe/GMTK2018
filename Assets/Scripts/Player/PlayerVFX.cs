@@ -7,6 +7,7 @@ public class PlayerVFX : MonoBehaviour
     [Header("Scene Assignmnets")]
     public ParticleSystem leftSideSparks;
     public ParticleSystem rightSideSparks;
+    public ParticleSystem landingSparks;
 
     public bool IsLeftSideCol { get; set; }
     public bool IsRightSideCol { get; set; }
