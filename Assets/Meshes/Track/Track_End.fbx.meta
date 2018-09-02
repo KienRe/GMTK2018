@@ -4,13 +4,19 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Trak_End
+    100002: TrackEnd
     400000: //RootNode
-    400002: Trak_End
-    2100000: lambert3
-    2300000: Trak_End
-    3300000: Trak_End
-    4300000: Trak_End
+    400002: TrackEnd
+    2100000: lambert1
+    2100002: Steelfence
+    2100004: Metalfence_Stand1
+    2100006: woodfence
+    2100008: Steelfence2
+    2100010: Fence1
+    2100012: Track
+    2300000: TrackEnd
+    3300000: TrackEnd
+    4300000: TrackEnd
   externalObjects: {}
   materials:
     importMaterials: 1

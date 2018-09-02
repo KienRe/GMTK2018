@@ -3,17 +3,20 @@ guid: 6b046a3edf5fae14cbf99e028ed6a6b6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: pPipe4
+    100000: Metal_Sheet3
     100002: //RootNode
-    400000: pPipe4
+    400000: Metal_Sheet3
     400002: //RootNode
-    2100000: lambert1
-    2300000: pPipe4
-    3300000: pPipe4
-    4300000: pPipe4
+    2100000: Metalsheet
+    2100002: Track
+    2100004: woodfence
+    2100006: tire
+    2300000: Metal_Sheet3
+    3300000: Metal_Sheet3
+    4300000: Metal_Sheet3
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -69,7 +72,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
